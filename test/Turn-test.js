@@ -68,6 +68,6 @@ describe('Turn', function() {
         const turn = new Turn('object', card);
         expect(turn.giveFeedback).to.be.a('function');
         expect(turn.giveFeedback()).to.equal('correct!');
-    })
+    });
 
 })
