@@ -15,8 +15,7 @@ describe('Deck', function() {
         const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
         const card3 = new Card(12, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
         const deck = new Deck([card1, card2, card3]);
-        console.log(deck.pile)
-        expect(deck.pile).to.deep.equal([card1, card2, card3]);
+        expect(deck.currentDeck).to.deep.equal([card1, card2, card3]);
     });
 
     it('should return current number of cards in the deck', function() {
