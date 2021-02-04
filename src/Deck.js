@@ -1,5 +1,3 @@
-const data = require('./data');
-
 class Deck {
     constructor(cards) {
         this.cards = cards;
