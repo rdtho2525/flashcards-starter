@@ -8,15 +8,16 @@ const Deck = require('../src/Deck');
 
 class Game {
   constructor() {
-    this.newDeck = new Deck([]);
+    this.newDeck = null;
     this.currentRound = null;
   }
 
   createCards() {
-    prototypeQuestions.forEach(ele => {
-      const newCard = new Card(ele.id, ele.question, ele.answers, ele.correctAnswer);
-      this.newDeck.cards.push(newCard);
+    const newCards = prototypeQuestions.map(ele => {
+      const instance = new Card(ele.id, ele.question, ele.answers, ele.correctAnswer);
+      return instance
     });
+    return newCards
   }
 
   printMessage(deck, round) {
@@ -30,8 +31,8 @@ class Game {
 
   start() {
     this.createCards();
+    this.newDeck = new Deck(this.createCards())
     this.currentRound = new Round(this.newDeck);
-    console.log(this.newDeck.length)
     this.printMessage(this.newDeck, this.currentRound);
     this.printQuestion(this.currentRound);
   }
