@@ -19,6 +19,18 @@ class Round {
         feedback === 'incorrect!' ? this.incorrectGuesses.push(currentCard.id) : null;
         return feedback
     }
+
+    calculatePercentCorrect() {
+        const correctAnswers = this.turns - this.incorrectGuesses.length;
+        const percentCorrect = Math.round((correctAnswers / this.turns) * 100);
+        return percentCorrect
+    }
+
+    endRound() {
+        if (!this.deck.length) {
+            console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
+        }
+    }
 }
 
 module.exports = Round;

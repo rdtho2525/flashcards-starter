@@ -3,7 +3,6 @@ const expect = chai.expect;
 
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
-const Turn = require('../src/Turn');
 const Round = require('../src/Round');
 
 describe('Round', function() {
@@ -69,5 +68,17 @@ describe('Round', function() {
         const round = new Round(deck);
         round.takeTurn('map()');
         expect(round.incorrectGuesses[0]).to.equal(6);
+    });
+
+    it('should be able to calculate the percentage of correct answers', function() {
+        const card1 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+        const card2 = new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method");
+        const card3 = new Card(6, "What is an example of a mutator method?", ["sort()", "map()", "join()"], "sort()");
+        const deck = new Deck([card1, card2, card3]);
+        const round = new Round(deck);
+        round.takeTurn('array');
+        round.takeTurn('accessor method');
+        round.takeTurn('map()');
+        expect(round.calculatePercentCorrect()).to.equal(67);
     });
 });
