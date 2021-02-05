@@ -25,7 +25,7 @@ describe('Game', function() {
 
     it('should be able to create cards', function() {
         game.start();
-        expect(game.newDeck.cards[0]).to.be.instanceOf(Card)
+        expect(game.newDeck.cards[0]).to.be.an.instanceOf(Card)
     });
 
     it('should be able to put cards in a deck', function() {
@@ -35,7 +35,7 @@ describe('Game', function() {
 
     it('should be able to create a new round using the current deck', function() {
         game.start();
-        expect(game.currentRound).to.be.instanceOf(Round);
-        expect(game.newDeck).to.be.instanceOf(Deck);
+        expect(game.currentRound).to.be.an.instanceOf(Round);
+        expect(game.newDeck).to.be.an.instanceOf(Deck);
     });
 });
